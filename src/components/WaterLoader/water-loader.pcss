@@ -1,0 +1,35 @@
+.water-loader {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 35px;
+    height: 100%;
+    background: linear-gradient(0deg, #009e5c 0%, #003b63 75%, #005a72 100%);
+
+    &__bubble {
+        position: absolute;
+        top: 0;
+    }
+
+    &__phase-wrap {
+        position: absolute;
+        height: 100px;
+        width: 365px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &__phase {
+        visibility: hidden;
+        height: 0;
+
+        &--active {
+            visibility: visible;
+            height: auto;
+        }
+    }
+}
