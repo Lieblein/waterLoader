@@ -92,7 +92,9 @@ export default class WaterLoader extends React.Component {
         if (bubbleTop > this.bubbleTopMax) {
             this.setState({ bubbleTop: 0, isWaveAnimation: true });
         } else {
-            this.setState({ bubbleTop: bubbleTop + 7 });
+            const minDif = 40;
+            const dif = bubbleTop < minDif ? 1 : bubbleTop / minDif;
+            this.setState({ bubbleTop: bubbleTop + dif });
         }
     };
 
