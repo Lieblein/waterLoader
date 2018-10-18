@@ -62,7 +62,7 @@ export default class WaterLoader extends React.Component {
         const { isWaveAnimation } = this.state;
 
         if (isWaveAnimation) {
-            // debounce
+            // throttle
             const now = Date.now();
             const dif = now - this.lastCall;
             if (dif > PHASE_INTERVAL || this.lastCall === null) {
