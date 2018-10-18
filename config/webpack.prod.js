@@ -24,7 +24,7 @@ const config = webpackMerge.smart(commonConfig, {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: '../../'
+                            publicPath: ASSETS_PATH
                         }
                     },
                     {
@@ -46,20 +46,21 @@ const config = webpackMerge.smart(commonConfig, {
         ]
     },
     plugins: [
-        new UglifyJsPlugin({
-            sourceMap: true,
-            parallel: true,
-            uglifyOptions: {
-                ecma: 6,
-                output: {
-                    comments: false,
-                    beautify: false
-                },
-                warnings: false
-            }
-        }),
-        new OptimizeCSSAssetsPlugin({})
-    ]
+        new MiniCssExtractPlugin({ filename: '[hash].[name].css' })
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                parallel: true,
+                uglifyOptions: {
+                    output: {
+                        beautify: false
+                    }
+                }
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    }
 });
 
 module.exports = config;
